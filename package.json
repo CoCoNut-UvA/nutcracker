@@ -1,0 +1,25 @@
+{
+  "name": "nutcracker",
+  "displayName": "NutCracker",
+  "description": "Syntax highlighting for CoCoNut DSL",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.71.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "ccn",
+      "aliases": ["CoCoNut DSL", "ccn"],
+      "extensions": [".ccn"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "ccn",
+      "scopeName": "source.ccn",
+      "path": "./syntaxes/ccn.tmLanguage.json"
+    }]
+  }
+}
