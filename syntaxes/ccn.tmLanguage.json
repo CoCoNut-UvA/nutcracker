@@ -283,6 +283,51 @@
 					]
 				},
 				{
+					"begin": "(nodeset)\\s+([A-Za-z][A-Za-z0-9_]*)",
+					"beginCaptures": {
+						"1": { "name": "storage.type.ccn" },
+						"2": { "name": "entity.name.type.ccn" }
+					},
+					"end": "(\\});",
+					"endCaptures": {
+						"1": { "name": "punctuation.section.block.end.ccn" }
+					},
+					"patterns": [
+						{
+							"match": "\\{",
+							"name": "punctuation.section.block.begin.ccn"
+						},
+						{
+							"include": "#node_attributes"
+						},
+						{
+							"begin": "(nodes)\\s+(=)",
+							"beginCaptures": {
+								"1": { "name": "variable.ccn" },
+								"2": { "name": "entity.name.type.ccn" },
+								"3": { "name": "keyword.operator.assignment.ccn" }
+							},
+							"end": "(\\})",
+							"endCaptures": {
+								"1": { "name": "punctuation.section.block.end.ccn" }
+							},
+							"patterns": [
+								{
+									"match": "\\{",
+									"name": "punctuation.section.block.begin.ccn"
+								},
+								{
+									"name": "entity.name.type.ccn",
+									"match": "[A-Za-z][A-Za-z0-9_]*"
+								},
+								{
+									"include": "#comments"
+								}
+							]
+						}
+					]
+				},
+				{
 					"include": "#comments"
 				}
 			]
@@ -313,6 +358,9 @@
 						},
 						{
 							"include": "#lifetimes"
+						},
+						{
+							"include": "#equations"
 						},
 						{
 							"include": "#comments"
@@ -578,6 +626,94 @@
 				}
 			]
 		},
+		"equations": {
+			"patterns": [
+				{
+					"begin": "(equations)",
+					"beginCaptures": {
+						"1": { "name": "variable.ccn" }
+					},
+					"end": "\\}",
+					"endCaptures": {
+						"1": { "name": "punctuation.section.block.end.ccn" }
+					},
+					"patterns": [
+						{
+							"match": "\\{\\s*$",
+							"name": "punctuation.section.block.begin.ccn"
+						},
+						{
+							"include": "#equation"
+						}
+					]
+				},
+				{
+					"include": "#comments"
+				}
+			]
+		},
+		"equation": {
+			"patterns": [
+				{
+					"begin": "((this)|([A-Za-z][A-Za-z0-9_]*))\\.([A-Za-z][A-Za-z0-9_]*)\\s+(=)",
+					"beginCaptures": {
+						"2": { "name": "variable.ccn" },
+						"3": { "name": "variable.ccn" },
+						"4": { "name": "variable.ccn" },
+						"5": { "name": "keyword.operator.assignment.ccn" }
+					},
+					"end": "(\\})",
+					"endCaptures": {
+						"1": { "name": "punctuation.section.block.end.ccn" }
+					},
+					"patterns": [
+						{
+							"match": "\\{",
+							"name": "punctuation.section.block.begin.ccn"
+						},
+						{
+							"include": "#equation_deps"
+						}
+					]
+				}
+			]
+		},
+		"equation_deps": {
+			"patterns": [
+				{
+					"begin": "(args)\\s+(=)",
+					"beginCaptures": {
+						"1": { "name": "variable.ccn" },
+						"2": { "name": "keyword.operator.assignment.ccn" }
+					},
+					"end": "(\\})",
+					"endCaptures": {
+						"1": { "name": "punctuation.section.block.end.ccn" }
+					},
+					"patterns": [
+						{
+							"match": "\\{",
+							"name": "punctuation.section.block.begin.ccn"
+						},
+						{
+							"include": "#dep"
+						}
+					]
+				}
+			]
+		},
+		"dep": {
+			"patterns": [
+				{
+					"match": "((this)|([A-Za-z][A-Za-z0-9_]*))\\.([A-Za-z][A-Za-z0-9_]*)",
+					"captures": {
+						"2": { "name": "variable.ccn" },
+						"3": { "name": "variable.ccn" },
+						"4": { "name": "variable.ccn" }
+					}
+				}
+			]
+		},
 		"directives": {
 			"patterns": [
 				{
@@ -595,7 +731,7 @@
 						},
 						{
 							"name": "keyword.control.ccn",
-							"match": "constructor|mandatory"
+							"match": "constructor|mandatory|inherited|synthesized"
 						},
 						{
 							"include": "#comments"
