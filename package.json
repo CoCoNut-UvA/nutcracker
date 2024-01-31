@@ -2,11 +2,11 @@
   "name": "nutcracker",
   "displayName": "NutCracker",
   "description": "Syntax highlighting for CoCoNut DSL",
-  "publisher": "jeroen45",
+  "publisher": "CoCoNut-UvA",
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Jeroen-45/nutcracker"
+    "url": "https://github.com/CoCoNut-UvA/nutcracker"
   },
   "version": "0.0.3",
   "engines": {
