@@ -9,7 +9,7 @@ There are two options to install NutCracker:
 - Copy the extension into the `<user home>/.vscode/extensions` folder and
   restart Code.
 - Install it from the Extensions Marketplace: 
-  https://marketplace.visualstudio.com/items?itemName=jeroen45.nutcracker
+  https://marketplace.visualstudio.com/items?itemName=CoCoNut-UvA.nutcracker
 
 ## Known Issues
 Since the current syntax highlighting is implemented using textmate grammars,
