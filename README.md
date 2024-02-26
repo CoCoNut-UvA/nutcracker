@@ -8,7 +8,7 @@ University of Amsterdam: https://github.com/CoCoNut-UvA/coconut
 There are two options to install NutCracker:
 - Copy the extension into the `<user home>/.vscode/extensions` folder and
   restart Code.
-- Install it from the Extensions Marketplace: 
+- Install it from the Extensions Marketplace:
   https://marketplace.visualstudio.com/items?itemName=CoCoNut-UvA.nutcracker
 
 ## Known Issues
@@ -17,7 +17,7 @@ the parsing is somewhat limited. This means that in some cases, especially
 newlines in the middle of a definition, the code isn't styled properly.
 
 *The solution for this would probably be implementing an actual language server.
-Feel free to contact me if you're interested in aiding with developing this.*
+Feel free to contact us if you're interested in aiding with developing this.*
 
 ## Development
 Pull requests are always welcome!
