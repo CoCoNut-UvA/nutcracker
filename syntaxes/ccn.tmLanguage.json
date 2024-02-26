@@ -301,29 +301,7 @@
 							"include": "#node_attributes"
 						},
 						{
-							"begin": "(nodes)\\s+(=)",
-							"beginCaptures": {
-								"1": { "name": "variable.ccn" },
-								"2": { "name": "entity.name.type.ccn" },
-								"3": { "name": "keyword.operator.assignment.ccn" }
-							},
-							"end": "(\\})",
-							"endCaptures": {
-								"1": { "name": "punctuation.section.block.end.ccn" }
-							},
-							"patterns": [
-								{
-									"match": "\\{",
-									"name": "punctuation.section.block.begin.ccn"
-								},
-								{
-									"name": "entity.name.type.ccn",
-									"match": "[A-Za-z][A-Za-z0-9_]*"
-								},
-								{
-									"include": "#comments"
-								}
-							]
+							"include": "#nodes"
 						}
 					]
 				},
@@ -675,6 +653,9 @@
 							"include": "#equation_deps"
 						}
 					]
+				},
+				{
+					"include": "#comments"
 				}
 			]
 		},
@@ -699,6 +680,9 @@
 							"include": "#dep"
 						}
 					]
+				},
+				{
+					"include": "#comments"
 				}
 			]
 		},
@@ -711,6 +695,9 @@
 						"3": { "name": "variable.ccn" },
 						"4": { "name": "variable.ccn" }
 					}
+				},
+				{
+					"include": "#comments"
 				}
 			]
 		},
